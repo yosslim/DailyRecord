@@ -1,0 +1,59 @@
+﻿@model DailyRecord.Data.Models.ViewModel.LoginViewModel
+@{
+	ViewData["Title"] = "Login";
+}
+
+<style>
+	body {
+		background: #ffe259;
+		background: linear-gradient(to right, #ffa751, #ffe259);
+	}
+
+	.bg {
+		background-image: url(../img/hero.jpg);
+		background-position: center center;
+	}
+</style>
+
+<div class="container w-75 bg-primary mt-5 rounded shadow">
+	<div class="row align-items-stretch">
+		<div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
+			<!--d-none: si no tiene brackpoints no se visualizara la imagen-->
+
+		</div>
+		<div class="col bg-white p-5 rounded-end">
+			<div class="text-end">
+				<img src="logo.png" width="48" alt="">
+			</div>
+			<h2 class="fw-bold text-center pt-5 mb-5">Bienvenido</h2>
+			<!--LOGIN-->
+			<form asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="mb-3">
+					<label class="form-label" asp-for="Email">Email Address</label>
+					<input type="email" asp-for="Email" class="form-control" />
+					<span asp-validation-for="Email" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label class="form-label" asp-for="Password">Password</label>
+					<input type="password" asp-for="Password" class="form-control" />
+					<span asp-validation-for="Password" class="text-danger"></span>
+				</div>
+				<div class="mb-3 form-check">
+					<input type="checkbox" asp-for="RememberMe" class="form-check-input" />
+					<label class="form-check-label" asp-for="RememberMe">Remember Me?</label>
+				</div>
+				<div class="d-grid">
+					<button type="submit" class="btn btn-primary">Login</button>
+				</div>
+				<div class="mb-3 text-center">
+					<span><a>Forgotten password?</a></span>
+				</div>
+				<div class="d-grid">
+					<a class="btn btn-success" asp-area="" asp-controller="Account" asp-action="Register">Create New Account</a>
+				</div>
+			</form>
+
+		</div>
+	</div>
+</div>
